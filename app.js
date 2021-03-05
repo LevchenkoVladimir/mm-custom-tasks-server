@@ -4,6 +4,7 @@ const pdf = require('html-pdf');
 const fs = require('fs');
 
 app.use(express.json());
+app.use(require('cors')());
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://192.168.1.179:8090');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
