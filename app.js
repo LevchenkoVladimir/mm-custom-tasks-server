@@ -2,9 +2,9 @@ const express = require('express');
 const app = express();
 const pdf = require('html-pdf');
 const fs = require('fs');
+const cors = require('cors');
 
 app.use(express.json());
-app.use(require('cors')());
 app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://192.168.1.179:8090');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -23,7 +23,7 @@ app.post('/event', (req, res) => {
     res.status(201).end();
 });
 
-app.post('/generatePDF', (req, res) => {
+app.post('/generatePDF', cors(), (req, res) => {
     const fileName = `print${Number(new Date())}.pdf`;
     console.log('create pdf');
     pdf.create(req.body.html, {
