@@ -4,9 +4,18 @@ const pdf = require('html-pdf');
 const fs = require('fs');
 
 app.use(express.json());
-app.use(require('cors')({
-    origin: ['http://192.168.1.179:8090']
-}));
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'http://192.168.1.179:8090');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Credentials', 'true');
+
+    if (req.method === 'OPTIONS') {
+        return res.status(200).json({});
+    }
+
+    next();
+});
 
 app.post('/event', (req, res) => {
     console.log(req.body);
