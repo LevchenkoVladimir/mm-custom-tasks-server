@@ -6,10 +6,7 @@ const cors = require('cors');
 
 app.use(express.json());
 
-app.use(cors({
-    origin: true,
-    credentials: true
-}));
+app.use(cors());
 
 
 // app.use(function (req, res, next) {
