@@ -31,7 +31,9 @@ app.post('/generatePDF', (req, res) => {
     const fileName = `print${Number(new Date())}.pdf`;
     console.log('create pdf');
     pdf.create(req.body.html, {
-        border: '10mm'
+        border: '10mm',
+        height: '297mm',
+        width: '210mm'
     }).toFile(`./files/${fileName}`, function (err, result) {
         if (err) {
             console.log(err);
