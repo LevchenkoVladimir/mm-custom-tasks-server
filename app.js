@@ -5,7 +5,7 @@ const fs = require('fs');
 const cors = require('cors');
 
 app.use(express.json());
-/*app.use(function (req, res, next) {
+app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://192.168.1.179:8090');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -16,14 +16,14 @@ app.use(express.json());
     }
 
     next();
-});*/
+});
 
 app.post('/event', (req, res) => {
     console.log(req.body);
     res.status(201).end();
 });
 
-app.post('/generatePDF', cors(), (req, res) => {
+app.post('/generatePDF', (req, res) => {
     const fileName = `print${Number(new Date())}.pdf`;
     console.log('create pdf');
     pdf.create(req.body.html, {
