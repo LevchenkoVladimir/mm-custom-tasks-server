@@ -4,7 +4,9 @@ const pdf = require('html-pdf');
 const fs = require('fs');
 
 app.use(express.json());
-app.use(require('cors')());
+app.use(require('cors')({
+    origin: ['http://192.168.1.179:8090']
+}));
 
 app.post('/event', (req, res) => {
     console.log(req.body);
