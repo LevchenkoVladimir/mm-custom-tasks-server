@@ -5,7 +5,7 @@ const fs = require('fs');
 const cors = require('cors');
 
 app.use(express.json());
-app.use(function (req, res, next) {
+/*app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://192.168.1.179:8090');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
     }
 
     next();
-});
+});*/
 
 app.post('/event', (req, res) => {
     console.log(req.body);
