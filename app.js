@@ -47,7 +47,7 @@ app.post('/generatePDF', (req, res) => {
             const to = setTimeout(() => {
                 fs.unlinkSync(result.filename);
                 clearTimeout(to);
-            }, 5000)
+            }, 60000);
         }
     });
 });
